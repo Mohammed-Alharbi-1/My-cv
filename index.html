@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Al-Harbi | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            background: var(--secondary);
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 5rem;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--glass);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-frame {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .about-image-inner {
+            width: 90%;
+            height: 90%;
+            background: var(--dark);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: var(--primary);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 1.5s ease;
+            width: 0;
+        }
+
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 21px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .certificate-preview {
+            height: 180px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .certificate-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certificate-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .certificate-info .issuer {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .certificate-info .instructor {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-info .cert-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .certificate-info .cert-id {
+            color: var(--gray);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            font-family: monospace;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .badge-section {
+            margin-top: 4rem;
+        }
+
+        .badge-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s;
+            max-width: 400px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .badge-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .badge-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-card p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-5px) rotate(5deg);
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--gray);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .footer-heart {
+            color: #ef4444;
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            nav, .scroll-indicator, .hero-buttons, .social-links, footer {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            section {
+                padding: 2rem;
+                page-break-inside: avoid;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .skill-card, .timeline-content, .certificate-card {
+                background: #f5f5f5;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <nav id="navbar">
+        <div class="logo">Mohammed Al-Harbi</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-code"></i> Computer Science Student
+            </div>
+            <h1>I'm <span class="gradient-text">Mohammed Al-Harbi</span></h1>
+            <p class="hero-subtitle">Passionate Developer | Web Designer | Lifelong Learner</p>
+            <p class="hero-desc">
+                A third-year student at Shaqra University with a strong passion for web development and programming. 
+                I constantly strive to learn new technologies and improve my skills in the ever-evolving tech world.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Get In Touch
+                </a>
+                <button class="btn btn-outline" onclick="window.print()">
+                    <i class="fas fa-download"></i> Download CV
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header fade-in">
+            <h2>About Me</h2>
+            <p>Learn more about my journey and ambitions</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <div class="about-image-frame">
+                    <div class="about-image-inner">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">21</div>
+                        <div class="stat-label">Years Old</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3rd</div>
+                        <div class="stat-label">Year Student</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Certificates</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text fade-in">
+                <h3>An Ambitious Person Striving for Excellence</h3>
+                <p>
+                    I'm Mohammed Al-Harbi, a third-year student at the College of Computer Science, Shaqra University. 
+                    Since I started my journey in the world of programming, I have believed that continuous learning is the key to success in this rapidly evolving field.
+                </p>
+                <p>
+                    I have experience in multiple programming languages and web technologies, and I constantly work on developing my skills through practical projects and training courses. 
+                    I believe that every challenge is an opportunity for growth and development.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        <i class="fas fa-quote-right" style="margin-right: 0.5rem;"></i>
+                        The goal is not to be the best, but to be better than you were yesterday.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header fade-in">
+            <h2>Education</h2>
+            <p>My academic journey and achievements</p>
+        </div>
+        <div class="education-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2023 - Present</span>
+                    <h3>Bachelor of Computer Science</h3>
+                    <h4><i class="fas fa-university"></i> Shaqra University</h4>
+                    <p>
+                        Currently in my third year at the College of Computer Science. Specializing in programming and software development, 
+                        with a particular interest in web development and internet applications.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2022 - 2023</span>
+                    <h3>Second Year</h3>
+                    <h4><i class="fas fa-book"></i> Shaqra University</h4>
+                    <p>
+                        Learned the fundamentals of programming, data structures, and databases, and began my journey into professional web development.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2021 - 2022</span>
+                    <h3>First Year</h3>
+                    <h4><i class="fas fa-graduation-cap"></i> Shaqra University</h4>
+                    <p>
+                        The beginning of my university journey in computer science, where I acquired foundational concepts in mathematics, programming, and logic.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header fade-in">
+            <h2>Technical Skills</h2>
+            <p>Technologies and tools I work with</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">General programming, data analysis, automation scripts</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <h3>HTML</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">Web structure, HTML5, Semantic Elements</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="90%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <h3>CSS</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">Web styling, Flexbox, Grid, Animations</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fab fa-js"></i>
+                </div>
+                <h3>JavaScript</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">Web interactivity, DOM manipulation, ES6+</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="80%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>SQL</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">Databases, queries, table design</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="75%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Networking</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;">Cisco Packet Tracer, IoT, Network fundamentals</p>
+                <div class="skill-level">
+                    <div class="skill-progress" data-width="70%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="section-header fade-in">
+            <h2>Certificates & Badges</h2>
+            <p>Professional certifications and verified achievements</p>
+        </div>
+
+        <div class="certificates-grid">
+            <div class="certificate-card fade-in">
+                <div class="certificate-preview">
+                    <span class="certificate-badge">Cisco</span>
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="certificate-info">
+                    <h3>Getting Started with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
+                    <div class="instructor">Instructor: Dr. Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 15 Apr 2025</div>
+                    <div class="cert-id">ID: 5e351eca-a3c2-49d5-bfaa-efc6f70435b4</div>
+                    <div class="certificate-actions">
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-preview">
+                    <span class="certificate-badge">Cisco</span>
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="certificate-info">
+                    <h3>Exploring Networking with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
+                    <div class="instructor">Instructor: Dr. Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 27 Apr 2025</div>
+                    <div class="cert-id">ID: 2417e63d-bf24-4d9c-ac41-05687b7b2a71</div>
+                    <div class="certificate-actions">
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-preview">
+                    <span class="certificate-badge">Cisco</span>
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="certificate-info">
+                    <h3>Exploring Internet of Things with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
+                    <div class="instructor">Instructor: Dr. Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 27 Apr 2025</div>
+                    <div class="cert-id">ID: c2bfaeeb-c3a5-440c-97e0-070dc124658e</div>
+                    <div class="certificate-actions">
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in">
+                <div class="certificate-preview">
+                    <span class="certificate-badge">JS Institute</span>
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="certificate-info">
+                    <h3>HTML Essentials</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> JS Institute / Cisco Networking Academy — Shaqra University</div>
+                    <div class="instructor">Instructor: Nayyar Ahmed Khan</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 18 Mar 2026</div>
+                    <div class="cert-id">Open Education & Development Group</div>
+                    <div class="certificate-actions">
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="badge-section fade-in">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h3 style="font-size: 2rem;">Verified Badge</h3>
+                <p>Digital credential earned</p>
+            </div>
+            <div class="badge-card">
+                <img src="html-essentials-badge.png" alt="HTML Essentials Badge" class="badge-image">
+                <h3>HTML Essentials</h3>
+                <p>Cisco Networking Academy — Verified Digital Badge</p>
+                <div style="margin-top: 1rem;">
+                    <span class="btn-small btn-primary"><i class="fas fa-shield-alt"></i> Verified by Cisco</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header fade-in">
+            <h2>Get In Touch</h2>
+            <p>Let's build something amazing together</p>
+        </div>
+        <div class="contact-content fade-in">
+            <h2>Have a project or idea?</h2>
+            <p>
+                I'm always excited to work on new projects and collaborate with others. 
+                If you have an idea or project you want to build, don't hesitate to reach out.
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            Made with <span class="footer-heart">❤</span> by Mohammed Al-Harbi | 2025
+        </p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'rgba(15, 23, 42, 0.95)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.backdropFilter = 'blur(20px)';
+                navLinks.style.borderTop = '1px solid rgba(255,255,255,0.1)';
+            }
+        }
+
+        const subtitle = document.querySelector('.hero-subtitle');
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                subtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        setTimeout(typeWriter, 1000);
+
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (0.5 - x) * speed;
+                const yOffset = (0.5 - y) * speed;
+                shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
