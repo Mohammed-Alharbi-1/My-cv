@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Al-Harbi | Portfolio</title>
+    <title data-i18n="pageTitle">Mohammed Al-Harbi | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -27,12 +27,17 @@
             box-sizing: border-box;
         }
 
+        html[dir="rtl"] body {
+            font-family: 'Tajawal', 'Inter', sans-serif;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Tajawal', sans-serif;
             background: var(--darker);
             color: var(--light);
             overflow-x: hidden;
             line-height: 1.7;
+            transition: all 0.3s ease;
         }
 
         .bg-animation {
@@ -142,6 +147,7 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -157,6 +163,11 @@
             color: var(--light);
         }
 
+        html[dir="rtl"] .nav-links a::after {
+            right: 0;
+            left: auto;
+        }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -170,6 +181,29 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .lang-toggle {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--light);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.05);
         }
 
         .mobile-menu {
@@ -212,6 +246,10 @@
             margin-bottom: 1rem;
             line-height: 1.2;
             animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        html[dir="rtl"] .hero h1 {
+            font-size: 4rem;
         }
 
         .gradient-text {
@@ -263,7 +301,7 @@
             gap: 0.5rem;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             font-size: 1.1rem;
         }
 
@@ -299,7 +337,7 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
@@ -338,6 +376,12 @@
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+        }
+
+        html[dir="rtl"] .section-header h2::after {
+            right: 50%;
+            left: auto;
+            transform: translateX(50%);
         }
 
         .section-header h2::after {
@@ -443,6 +487,11 @@
             font-size: 1.1rem;
         }
 
+        html[dir="rtl"] .highlight-box {
+            border-left: none;
+            border-right: 4px solid var(--primary);
+        }
+
         .highlight-box {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
             border-left: 4px solid var(--primary);
@@ -455,6 +504,11 @@
             margin: 0;
             color: var(--light);
             font-weight: 500;
+        }
+
+        html[dir="rtl"] .highlight-box i {
+            margin-left: 0.5rem;
+            margin-right: 0;
         }
 
         .skills-grid {
@@ -544,6 +598,11 @@
             margin: 0 auto;
         }
 
+        html[dir="rtl"] .education-timeline::before {
+            right: 30px;
+            left: auto;
+        }
+
         .education-timeline::before {
             content: '';
             position: absolute;
@@ -563,9 +622,20 @@
             transition: all 0.6s ease;
         }
 
+        html[dir="rtl"] .timeline-item {
+            padding-left: 0;
+            padding-right: 80px;
+            transform: translateX(50px);
+        }
+
         .timeline-item.visible {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        html[dir="rtl"] .timeline-dot {
+            right: 21px;
+            left: auto;
         }
 
         .timeline-dot {
@@ -587,6 +657,10 @@
             border: 1px solid rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
             transition: transform 0.3s;
+        }
+
+        html[dir="rtl"] .timeline-content:hover {
+            transform: translateX(-10px);
         }
 
         .timeline-content:hover {
@@ -655,6 +729,11 @@
             position: relative;
         }
 
+        html[dir="rtl"] .certificate-badge {
+            left: 1rem;
+            right: auto;
+        }
+
         .certificate-badge {
             position: absolute;
             top: 1rem;
@@ -696,7 +775,7 @@
         .certificate-info .cert-date {
             color: var(--gray);
             font-size: 0.85rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.4rem;
@@ -865,6 +944,10 @@
                 font-size: 2.8rem;
             }
 
+            html[dir="rtl"] .hero h1 {
+                font-size: 2.5rem;
+            }
+
             .hero-subtitle {
                 font-size: 1.2rem;
             }
@@ -892,7 +975,7 @@
         }
 
         @media print {
-            nav, .scroll-indicator, .hero-buttons, .social-links, footer {
+            nav, .scroll-indicator, .hero-buttons, .social-links, footer, .lang-toggle {
                 display: none !important;
             }
 
@@ -927,14 +1010,17 @@
     </div>
 
     <nav id="navbar">
-        <div class="logo">Mohammed Al-Harbi</div>
+        <div class="logo" data-i18n="name">Mohammed Al-Harbi</div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certificates">Certificates</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-i18n="navHome">Home</a></li>
+            <li><a href="#about" data-i18n="navAbout">About</a></li>
+            <li><a href="#education" data-i18n="navEducation">Education</a></li>
+            <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+            <li><a href="#certificates" data-i18n="navCertificates">Certificates</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+            <li><button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">
+                <i class="fas fa-globe"></i> <span id="langText">العربية</span>
+            </button></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -944,20 +1030,20 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-badge">
-                <i class="fas fa-code"></i> Computer Science Student
+                <i class="fas fa-code"></i> <span data-i18n="heroBadge">Computer Science Student</span>
             </div>
-            <h1>I'm <span class="gradient-text">Mohammed Al-Harbi</span></h1>
-            <p class="hero-subtitle">Passionate Developer | Web Designer | Lifelong Learner</p>
-            <p class="hero-desc">
+            <h1 data-i18n="heroTitle">I'm <span class="gradient-text">Mohammed Al-Harbi</span></h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">Passionate Developer | Web Designer | Lifelong Learner</p>
+            <p class="hero-desc" data-i18n="heroDesc">
                 A third-year student at Shaqra University with a strong passion for web development and programming. 
                 I constantly strive to learn new technologies and improve my skills in the ever-evolving tech world.
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Get In Touch
+                    <i class="fas fa-paper-plane"></i> <span data-i18n="btnContact">Get In Touch</span>
                 </a>
                 <button class="btn btn-outline" onclick="window.print()">
-                    <i class="fas fa-download"></i> Download CV
+                    <i class="fas fa-download"></i> <span data-i18n="btnDownload">Download CV</span>
                 </button>
             </div>
         </div>
@@ -968,8 +1054,8 @@
 
     <section id="about">
         <div class="section-header fade-in">
-            <h2>About Me</h2>
-            <p>Learn more about my journey and ambitions</p>
+            <h2 data-i18n="aboutTitle">About Me</h2>
+            <p data-i18n="aboutSubtitle">Learn more about my journey and ambitions</p>
         </div>
         <div class="about-grid">
             <div class="about-image fade-in">
@@ -981,36 +1067,36 @@
                 <div class="about-stats">
                     <div class="stat-card">
                         <div class="stat-number">21</div>
-                        <div class="stat-label">Years Old</div>
+                        <div class="stat-label" data-i18n="statAge">Years Old</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">3rd</div>
-                        <div class="stat-label">Year Student</div>
+                        <div class="stat-number" data-i18n="statYearNum">3rd</div>
+                        <div class="stat-label" data-i18n="statYear">Year Student</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">5+</div>
-                        <div class="stat-label">Languages</div>
+                        <div class="stat-label" data-i18n="statLangs">Languages</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">4</div>
-                        <div class="stat-label">Certificates</div>
+                        <div class="stat-label" data-i18n="statCerts">Certificates</div>
                     </div>
                 </div>
             </div>
             <div class="about-text fade-in">
-                <h3>An Ambitious Person Striving for Excellence</h3>
-                <p>
+                <h3 data-i18n="aboutHeading">An Ambitious Person Striving for Excellence</h3>
+                <p data-i18n="aboutP1">
                     I'm Mohammed Al-Harbi, a third-year student at the College of Computer Science, Shaqra University. 
                     Since I started my journey in the world of programming, I have believed that continuous learning is the key to success in this rapidly evolving field.
                 </p>
-                <p>
+                <p data-i18n="aboutP2">
                     I have experience in multiple programming languages and web technologies, and I constantly work on developing my skills through practical projects and training courses. 
                     I believe that every challenge is an opportunity for growth and development.
                 </p>
                 <div class="highlight-box">
                     <p>
-                        <i class="fas fa-quote-right" style="margin-right: 0.5rem;"></i>
-                        The goal is not to be the best, but to be better than you were yesterday.
+                        <i class="fas fa-quote-right"></i>
+                        <span data-i18n="quote">The goal is not to be the best, but to be better than you were yesterday.</span>
                     </p>
                 </div>
             </div>
@@ -1019,17 +1105,17 @@
 
     <section id="education">
         <div class="section-header fade-in">
-            <h2>Education</h2>
-            <p>My academic journey and achievements</p>
+            <h2 data-i18n="eduTitle">Education</h2>
+            <p data-i18n="eduSubtitle">My academic journey and achievements</p>
         </div>
         <div class="education-timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">2025 - Present</span>
-                    <h3>Bachelor of Computer Science</h3>
-                    <h4><i class="fas fa-university"></i> Shaqra University</h4>
-                    <p>
+                    <span class="timeline-date" data-i18n="eduDate1">2025 - Present</span>
+                    <h3 data-i18n="eduDegree">Bachelor of Computer Science</h3>
+                    <h4><i class="fas fa-university"></i> <span data-i18n="university">Shaqra University</span></h4>
+                    <p data-i18n="eduDesc1">
                         Currently in my third year at the College of Computer Science. Specializing in programming and software development, 
                         with a particular interest in web development and internet applications.
                     </p>
@@ -1038,10 +1124,10 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">2024 - 2025</span>
-                    <h3>Second Year</h3>
-                    <h4><i class="fas fa-book"></i> Shaqra University</h4>
-                    <p>
+                    <span class="timeline-date" data-i18n="eduDate2">2024 - 2025</span>
+                    <h3 data-i18n="eduYear2">Second Year</h3>
+                    <h4><i class="fas fa-book"></i> <span data-i18n="university">Shaqra University</span></h4>
+                    <p data-i18n="eduDesc2">
                         Learned the fundamentals of programming, data structures, and databases, and began my journey into professional web development.
                     </p>
                 </div>
@@ -1049,10 +1135,10 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">2023 - 2024</span>
-                    <h3>First Year</h3>
-                    <h4><i class="fas fa-graduation-cap"></i> Shaqra University</h4>
-                    <p>
+                    <span class="timeline-date" data-i18n="eduDate3">2023 - 2024</span>
+                    <h3 data-i18n="eduYear3">First Year</h3>
+                    <h4><i class="fas fa-graduation-cap"></i> <span data-i18n="university">Shaqra University</span></h4>
+                    <p data-i18n="eduDesc3">
                         The beginning of my university journey in computer science, where I acquired foundational concepts in mathematics, programming, and logic.
                     </p>
                 </div>
@@ -1062,82 +1148,53 @@
 
     <section id="skills">
         <div class="section-header fade-in">
-            <h2>Technical Skills</h2>
-            <p>Technologies and tools I work with</p>
+            <h2 data-i18n="skillsTitle">Technical Skills</h2>
+            <p data-i18n="skillsSubtitle">Technologies and tools I work with</p>
         </div>
         <div class="skills-grid">
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fab fa-python"></i>
-                </div>
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
                 <h3>Python</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">General programming, data analysis, automation scripts</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="85%"></div>
-                </div>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillPython">General programming, data analysis, automation scripts</p>
+                <div class="skill-level"><div class="skill-progress" data-width="85%"></div></div>
             </div>
-
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fab fa-html5"></i>
-                </div>
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
                 <h3>HTML</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">Web structure, HTML5, Semantic Elements</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="90%"></div>
-                </div>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillHTML">Web structure, HTML5, Semantic Elements</p>
+                <div class="skill-level"><div class="skill-progress" data-width="90%"></div></div>
             </div>
-
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fab fa-css3-alt"></i>
-                </div>
+                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                 <h3>CSS</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">Web styling, Flexbox, Grid, Animations</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="85%"></div>
-                </div>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillCSS">Web styling, Flexbox, Grid, Animations</p>
+                <div class="skill-level"><div class="skill-progress" data-width="85%"></div></div>
             </div>
-
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fab fa-js"></i>
-                </div>
+                <div class="skill-icon"><i class="fab fa-js"></i></div>
                 <h3>JavaScript</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">Web interactivity, DOM manipulation, ES6+</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="80%"></div>
-                </div>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillJS">Web interactivity, DOM manipulation, ES6+</p>
+                <div class="skill-level"><div class="skill-progress" data-width="65%"></div></div>
             </div>
-
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fas fa-database"></i>
-                </div>
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
                 <h3>SQL</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">Databases, queries, table design</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="75%"></div>
-                </div>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillSQL">Databases, queries, table design</p>
+                <div class="skill-level"><div class="skill-progress" data-width="70%"></div></div>
             </div>
-
             <div class="skill-card fade-in">
-                <div class="skill-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>Networking</h3>
-                <p style="color: var(--gray); margin-bottom: 1rem;">Cisco Packet Tracer, IoT, Network fundamentals</p>
-                <div class="skill-level">
-                    <div class="skill-progress" data-width="70%"></div>
-                </div>
+                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                <h3 data-i18n="skillNetTitle">Networking</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem;" data-i18n="skillNet">Cisco Packet Tracer, IoT, Network fundamentals</p>
+                <div class="skill-level"><div class="skill-progress" data-width="70%"></div></div>
             </div>
         </div>
     </section>
 
     <section id="certificates">
         <div class="section-header fade-in">
-            <h2>Certificates & Badges</h2>
-            <p>Professional certifications and verified achievements</p>
+            <h2 data-i18n="certTitle">Certificates & Badges</h2>
+            <p data-i18n="certSubtitle">Professional certifications and verified achievements</p>
         </div>
 
         <div class="certificates-grid">
@@ -1147,13 +1204,13 @@
                     <i class="fas fa-network-wired"></i>
                 </div>
                 <div class="certificate-info">
-                    <h3>Getting Started with Cisco Packet Tracer</h3>
-                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
-                    <div class="instructor">Instructor: Dr.Fahad Alruwaili</div>
-                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 15 Apr 2025</div>
+                    <h3 data-i18n="cert1Title">Getting Started with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> <span data-i18n="certIssuer">Cisco Networking Academy — Shaqra University</span></div>
+                    <div class="instructor" data-i18n="cert1Inst">Instructor: Dr.Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> <span data-i18n="cert1Date">Completed: 15 Apr 2025</span></div>
                     <div class="cert-id">ID: 5e351eca-a3c2-49d5-bfaa-efc6f70435b4</div>
                     <div class="certificate-actions">
-                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Verified</span></span>
                     </div>
                 </div>
             </div>
@@ -1164,13 +1221,13 @@
                     <i class="fas fa-project-diagram"></i>
                 </div>
                 <div class="certificate-info">
-                    <h3>Exploring Networking with Cisco Packet Tracer</h3>
-                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
-                    <div class="instructor">Instructor: Dr.Fahad Alruwaili</div>
-                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 27 Apr 2025</div>
+                    <h3 data-i18n="cert2Title">Exploring Networking with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> <span data-i18n="certIssuer">Cisco Networking Academy — Shaqra University</span></div>
+                    <div class="instructor" data-i18n="cert2Inst">Instructor: Dr.Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> <span data-i18n="cert2Date">Completed: 27 Apr 2025</span></div>
                     <div class="cert-id">ID: 2417e63d-bf24-4d9c-ac41-05687b7b2a71</div>
                     <div class="certificate-actions">
-                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Verified</span></span>
                     </div>
                 </div>
             </div>
@@ -1181,13 +1238,13 @@
                     <i class="fas fa-microchip"></i>
                 </div>
                 <div class="certificate-info">
-                    <h3>Exploring Internet of Things with Cisco Packet Tracer</h3>
-                    <div class="issuer"><i class="fas fa-university"></i> Cisco Networking Academy — Shaqra University</div>
-                    <div class="instructor">Instructor: Dr.Fahad Alruwaili</div>
-                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 27 Apr 2025</div>
+                    <h3 data-i18n="cert3Title">Exploring Internet of Things with Cisco Packet Tracer</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> <span data-i18n="certIssuer">Cisco Networking Academy — Shaqra University</span></div>
+                    <div class="instructor" data-i18n="cert3Inst">Instructor: Dr.Fahad Alruwaili</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> <span data-i18n="cert3Date">Completed: 27 Apr 2025</span></div>
                     <div class="cert-id">ID: c2bfaeeb-c3a5-440c-97e0-070dc124658e</div>
                     <div class="certificate-actions">
-                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Verified</span></span>
                     </div>
                 </div>
             </div>
@@ -1198,13 +1255,13 @@
                     <i class="fab fa-html5"></i>
                 </div>
                 <div class="certificate-info">
-                    <h3>HTML Essentials</h3>
-                    <div class="issuer"><i class="fas fa-university"></i> JS Institute / Cisco Networking Academy — Shaqra University</div>
-                    <div class="instructor">Instructor:Dr.Nayyar Ahmed Khan</div>
-                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> Completed: 18 Mar 2026</div>
+                    <h3 data-i18n="cert4Title">HTML Essentials</h3>
+                    <div class="issuer"><i class="fas fa-university"></i> <span data-i18n="cert4Issuer">JS Institute / Cisco Networking Academy — Shaqra University</span></div>
+                    <div class="instructor" data-i18n="cert4Inst">Instructor:Dr.Nayyar Ahmed Khan</div>
+                    <div class="cert-date"><i class="fas fa-calendar-alt"></i> <span data-i18n="cert4Date">Completed: 18 Mar 2026</span></div>
                     <div class="cert-id">Open Education & Development Group</div>
                     <div class="certificate-actions">
-                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> Verified</span>
+                        <span class="btn-small btn-primary"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Verified</span></span>
                     </div>
                 </div>
             </div>
@@ -1212,49 +1269,239 @@
 
         <div class="badge-section fade-in">
             <div class="section-header" style="margin-bottom: 2rem;">
-                <h3 style="font-size: 2rem;">Verified Badge</h3>
-                <p>Digital credential earned</p>
+                <h3 style="font-size: 2rem;" data-i18n="badgeSection">Verified Badge</h3>
+                <p data-i18n="badgeSubtitle">Digital credential earned</p>
             </div>
             <div class="badge-card">
                 <img src="html-essentials-badge.png" alt="HTML Essentials Badge" class="badge-image">
                 <h3>HTML Essentials</h3>
-                <p>Cisco Networking Academy — Verified Digital Badge</p>
+                <p data-i18n="badgeDesc">Cisco Networking Academy — Verified Digital Badge</p>
                 <div style="margin-top: 1rem;">
-                    <span class="btn-small btn-primary"><i class="fas fa-shield-alt"></i> Verified by Cisco</span>
+                    <span class="btn-small btn-primary"><i class="fas fa-shield-alt"></i> <span data-i18n="badgeVerified">Verified by Cisco</span></span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        
         <div class="contact-content fade-in">
-            <h2>Have a project or idea?</h2>
-            <p>
+            <h2 data-i18n="contactHeading">Have a project or idea?</h2>
+            <p data-i18n="contactDesc">
                 I'm always excited to work on new projects and collaborate with others. 
                 If you have an idea or project you want to build, don't hesitate to reach out.
             </p>
             <div class="social-links">
-                <a href="https://github.com/Mohammed-Alharbi-1" class="social-link" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/mohammed-al-harbi-75a591405/" class="social-link" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="mailto:s445460338@std.su.edu.sa" class="social-link" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <a href="https://github.com/Mohammed-Alharbi-1" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mohammed-al-harbi-75a591405/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="mailto:s445460338@std.su.edu.sa" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </section>
 
     <footer>
         <p>
-            Made by Mohammed Al-Harbi | 2026
+            <span data-i18n="footerMade">Made by Mohammed Al-Harbi</span> | 2026
         </p>
     </footer>
 
     <script>
+        const translations = {
+            en: {
+                pageTitle: "Mohammed Al-Harbi | Portfolio",
+                name: "Mohammed Al-Harbi",
+                navHome: "Home",
+                navAbout: "About",
+                navEducation: "Education",
+                navSkills: "Skills",
+                navCertificates: "Certificates",
+                navContact: "Contact",
+                heroBadge: "Computer Science Student",
+                heroTitle: "I'm <span class='gradient-text'>Mohammed Al-Harbi</span>",
+                heroSubtitle: "Passionate Developer | Web Designer | Lifelong Learner",
+                heroDesc: "A third-year student at Shaqra University with a strong passion for web development and programming. I constantly strive to learn new technologies and improve my skills in the ever-evolving tech world.",
+                btnContact: "Get In Touch",
+                btnDownload: "Download CV",
+                aboutTitle: "About Me",
+                aboutSubtitle: "Learn more about my journey and ambitions",
+                statAge: "Years Old",
+                statYearNum: "3rd",
+                statYear: "Year Student",
+                statLangs: "Languages",
+                statCerts: "Certificates",
+                aboutHeading: "An Ambitious Person Striving for Excellence",
+                aboutP1: "I'm Mohammed Al-Harbi, a third-year student at the College of Computer Science, Shaqra University. Since I started my journey in the world of programming, I have believed that continuous learning is the key to success in this rapidly evolving field.",
+                aboutP2: "I have experience in multiple programming languages and web technologies, and I constantly work on developing my skills through practical projects and training courses. I believe that every challenge is an opportunity for growth and development.",
+                quote: "The goal is not to be the best, but to be better than you were yesterday.",
+                eduTitle: "Education",
+                eduSubtitle: "My academic journey and achievements",
+                eduDate1: "2023 - Present",
+                eduDegree: "Bachelor of Computer Science",
+                university: "Shaqra University",
+                eduDesc1: "Currently in my third year at the College of Computer Science. Specializing in programming and software development, with a particular interest in web development and internet applications.",
+                eduDate2: "2022 - 2023",
+                eduYear2: "Second Year",
+                eduDesc2: "Learned the fundamentals of programming, data structures, and databases, and began my journey into professional web development.",
+                eduDate3: "2021 - 2022",
+                eduYear3: "First Year",
+                eduDesc3: "The beginning of my university journey in computer science, where I acquired foundational concepts in mathematics, programming, and logic.",
+                skillsTitle: "Technical Skills",
+                skillsSubtitle: "Technologies and tools I work with",
+                skillPython: "General programming, data analysis, automation scripts",
+                skillHTML: "Web structure, HTML5, Semantic Elements",
+                skillCSS: "Web styling, Flexbox, Grid, Animations",
+                skillJS: "Web interactivity, DOM manipulation, ES6+",
+                skillSQL: "Databases, queries, table design",
+                skillNetTitle: "Networking",
+                skillNet: "Cisco Packet Tracer, IoT, Network fundamentals",
+                certTitle: "Certificates & Badges",
+                certSubtitle: "Professional certifications and verified achievements",
+                certIssuer: "Cisco Networking Academy — Shaqra University",
+                cert1Title: "Getting Started with Cisco Packet Tracer",
+                cert1Inst: "Instructor: Dr. Fahad Alruwaili",
+                cert1Date: "Completed: 15 Apr 2025",
+                cert2Title: "Exploring Networking with Cisco Packet Tracer",
+                cert2Inst: "Instructor: Dr. Fahad Alruwaili",
+                cert2Date: "Completed: 27 Apr 2025",
+                cert3Title: "Exploring Internet of Things with Cisco Packet Tracer",
+                cert3Inst: "Instructor: Dr. Fahad Alruwaili",
+                cert3Date: "Completed: 27 Apr 2025",
+                cert4Title: "HTML Essentials",
+                cert4Issuer: "JS Institute / Cisco Networking Academy — Shaqra University",
+                cert4Inst: "Instructor: Nayyar Ahmed Khan",
+                cert4Date: "Completed: 18 Mar 2026",
+                verified: "Verified",
+                badgeSection: "Verified Badge",
+                badgeSubtitle: "Digital credential earned",
+                badgeDesc: "Cisco Networking Academy — Verified Digital Badge",
+                badgeVerified: "Verified by Cisco",
+                contactTitle: "Get In Touch",
+                contactSubtitle: "Let's build something amazing together",
+                contactHeading: "Have a project or idea?",
+                contactDesc: "I'm always excited to work on new projects and collaborate with others. If you have an idea or project you want to build, don't hesitate to reach out.",
+                footerMade: "Made with",
+                footerBy: "by Mohammed Al-Harbi"
+            },
+            ar: {
+                pageTitle: "محمد الحربي | الموقع الشخصي",
+                name: "محمد الحربي",
+                navHome: "الرئيسية",
+                navAbout: "عني",
+                navEducation: "التعليم",
+                navSkills: "المهارات",
+                navCertificates: "الشهادات",
+                navContact: "تواصل",
+                heroBadge: "طالب علوم حاسب",
+                heroTitle: "أنا <span class='gradient-text'>محمد الحربي</span>",
+                heroSubtitle: "مطور شغوف | مصمم ويب | متعلم دائم",
+                heroDesc: "طالب في السنة الثالثة في جامعة شقراء، أمتلك شغفاً كبيراً بتطوير الويب والبرمجة. أسعى دائماً لتعلم تقنيات جديدة وتطوير مهاراتي في عالم التقنية المتطور.",
+                btnContact: "تواصل معي",
+                btnDownload: "تحميل السيرة الذاتية",
+                aboutTitle: "نبذة عني",
+                aboutSubtitle: "تعرف أكثر على مسيرتي وطموحاتي",
+                statAge: "عاماً",
+                statYearNum: "الثالثة",
+                statYear: "سنة دراسية",
+                statLangs: "لغات برمجة",
+                statCerts: "شهادات",
+                aboutHeading: "شخص طموح يسعى للتميز",
+                aboutP1: "أنا محمد الحربي، طالب في السنة الثالثة بكلية علوم الحاسب في جامعة شقراء. منذ أن بدأت رحلتي في عالم البرمجة، وأنا أؤمن بأن التعلم المستمر هو مفتاح النجاح في هذا المجال المتطور.",
+                aboutP2: "أمتلك خبرة في عدة لغات برمجة وتقنيات ويب، وأعمل باستمرار على تطوير مهاراتي من خلال المشاريع العملية والدورات التدريبية. أؤمن بأن كل تحدي هو فرصة للنمو والتطور.",
+                quote: "الهدف ليس أن تكون الأفضل، بل أن تكون أفضل مما كنت عليه بالأمس.",
+                eduTitle: "المسيرة التعليمية",
+                eduSubtitle: "رحلتي الأكاديمية وإنجازاتي",
+                eduDate1: "2023 - الآن",
+                eduDegree: "بكالوريوس علوم الحاسب",
+                university: "جامعة شقراء",
+                eduDesc1: "أدرس حالياً في السنة الثالثة بكلية علوم الحاسب. أتخصص في مجالات البرمجة وتطوير البرمجيات، مع اهتمام خاص بتطوير الويب وتطبيقات الإنترنت.",
+                eduDate2: "2022 - 2023",
+                eduYear2: "السنة الثانية",
+                eduDesc2: "تعلمت أساسيات البرمجة وهياكل البيانات وقواعد البيانات، وبدأت رحلتي في تعلم تطوير الويب بشكل احترافي.",
+                eduDate3: "2021 - 2022",
+                eduYear3: "السنة الأولى",
+                eduDesc3: "بداية رحلتي الجامعية في عالم علوم الحاسب، حيث اكتسبت المفاهيم الأساسية في الرياضيات والبرمجة والمنطق.",
+                skillsTitle: "المهارات التقنية",
+                skillsSubtitle: "التقنيات والأدوات التي أتقنها",
+                skillPython: "برمجة عامة، تحليل البيانات، سكربتات الأتمتة",
+                skillHTML: "هيكلة صفحات الويب، HTML5، العناصر الدلالية",
+                skillCSS: "تصميم الويب، Flexbox، Grid، Animations",
+                skillJS: "تفاعلية الويب، DOM manipulation، ES6+",
+                skillSQL: "قواعد البيانات، استعلامات، تصميم الجداول",
+                skillNetTitle: "الشبكات",
+                skillNet: "Cisco Packet Tracer، إنترنت الأشياء، أساسيات الشبكات",
+                certTitle: "الشهادات والبادجات",
+                certSubtitle: "شهادات مهنية وإنجازات موثقة",
+                certIssuer: "أكاديمية سيسكو للشبكات — جامعة شقراء",
+                cert1Title: "البداية مع Cisco Packet Tracer",
+                cert1Inst: "المحاضر: د. فهد الرويلي",
+                cert1Date: "تاريخ الإنجاز: 15 أبريل 2025",
+                cert2Title: "استكشاف الشبكات مع Cisco Packet Tracer",
+                cert2Inst: "المحاضر: د. فهد الرويلي",
+                cert2Date: "تاريخ الإنجاز: 27 أبريل 2025",
+                cert3Title: "استكشاف إنترنت الأشياء مع Cisco Packet Tracer",
+                cert3Inst: "المحاضر: د. فهد الرويلي",
+                cert3Date: "تاريخ الإنجاز: 27 أبريل 2025",
+                cert4Title: "أساسيات HTML",
+                cert4Issuer: "معهد JS / أكاديمية سيسكو — جامعة شقراء",
+                cert4Inst: "المحاضر: نيار أحمد خان",
+                cert4Date: "تاريخ الإنجاز: 18 مارس 2026",
+                verified: "موثق",
+                badgeSection: "بادج موثق",
+                badgeSubtitle: "شارة رقمية تم الحصول عليها",
+                badgeDesc: "أكاديمية سيسكو للشبكات — بادج رقمي موثق",
+                badgeVerified: "موثق من سيسكو",
+                contactTitle: "تواصل معي",
+                contactSubtitle: "لنبني شيئاً رائعاً معاً",
+                contactHeading: "هل لديك مشروع أو فكرة؟",
+                contactDesc: "أنا دائماً متحمس للعمل على مشاريع جديدة والتعاون مع الآخرين. إذا كان لديك فكرة أو مشروع تريد تنفيذه، لا تتردد في التواصل معي.",
+                footerMade: "صُنع بـ",
+                footerBy: "بواسطة محمد الحربي"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const html = document.documentElement;
+            const langBtn = document.getElementById('langText');
+
+            if (currentLang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                langBtn.textContent = 'English';
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                langBtn.textContent = 'العربية';
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    if (key === 'heroTitle' || key === 'pageTitle') {
+                        if (key === 'pageTitle') {
+                            document.title = translations[currentLang][key];
+                        } else {
+                            el.innerHTML = translations[currentLang][key];
+                        }
+                    } else {
+                        el.innerHTML = translations[currentLang][key];
+                    }
+                }
+            });
+
+            // Re-trigger skill bars animation
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        }
+
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1264,6 +1511,7 @@
             }
         });
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1277,6 +1525,7 @@
             });
         });
 
+        // Intersection Observer
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1302,6 +1551,7 @@
             observer.observe(el);
         });
 
+        // Mobile menu
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
@@ -1316,17 +1566,19 @@
                 navLinks.style.padding = '2rem';
                 navLinks.style.backdropFilter = 'blur(20px)';
                 navLinks.style.borderTop = '1px solid rgba(255,255,255,0.1)';
+                navLinks.style.gap = '1.5rem';
             }
         }
 
+        // Typewriter effect
         const subtitle = document.querySelector('.hero-subtitle');
-        const text = subtitle.textContent;
+        const originalText = subtitle.textContent;
         subtitle.textContent = '';
         let i = 0;
 
         function typeWriter() {
-            if (i < text.length) {
-                subtitle.textContent += text.charAt(i);
+            if (i < originalText.length) {
+                subtitle.textContent += originalText.charAt(i);
                 i++;
                 setTimeout(typeWriter, 50);
             }
@@ -1334,6 +1586,7 @@
 
         setTimeout(typeWriter, 1000);
 
+        // Parallax shapes
         document.addEventListener('mousemove', (e) => {
             const shapes = document.querySelectorAll('.shape');
             const x = e.clientX / window.innerWidth;
